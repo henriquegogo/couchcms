@@ -1,0 +1,10 @@
+{
+  "env" : {
+    "public" : {
+      "db" : "http://henriquegogo:k4ju5oth@henriquegogo.couchone.com/akayu"
+    },
+    "default" : {
+      "db" : "http://root:root@localhost:5984/akayu"
+    }
+  }
+}

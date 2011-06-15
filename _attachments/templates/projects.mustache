@@ -1,0 +1,11 @@
+{{#projects}}
+<div class='block'>
+  <small class='right'>{{language}}</small>
+  <h1>{{name}}</h1>
+  <h2>{{description}}</h2>
+  <a href="{{url}}" target="_blank"><img src="images/icon-github.png"> GitHub</a>
+  {{#homepage}}
+    &nbsp;<a href="{{homepage}}" target="_blank"><img src="images/icon-web.png"> Web</a>
+  {{/homepage}}
+</div>
+{{/projects}}
