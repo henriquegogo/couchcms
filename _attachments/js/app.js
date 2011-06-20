@@ -111,9 +111,10 @@ var app = Sammy('#colRight', function() {
   this.get('#/blog', function(ctx) {
     ctx.menuActive('blog');
 
+    ctx.title = "Sem conteúdo";
     ctx.content = "Sem conteúdo";
 
-    ctx.partial('templates/page.mustache');
+    ctx.partial('templates/article.mustache');
   });
 });
 
