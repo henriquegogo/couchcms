@@ -1,1 +1,9 @@
-[{"to": "index.html", "from": ""}, {"to": "*", "from": "*"}]
+[
+{"from": "",            "to": "index.html"},
+{"from": "_*",          "to": "_*"},
+{"from": "js/*",        "to": "js/*"},
+{"from": "images/*",    "to": "images/*"},
+{"from": "css/*",       "to": "css/*"},
+{"from": "templates/*", "to": "templates/*"},
+{"from": "/*",          "to": "index.html"}
+]

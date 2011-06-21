@@ -55,45 +55,45 @@ var app = Sammy('#colRight', function() {
     });
   });
 
-  this.get('#/', function(ctx) {
-    ctx.redirect('#/projects');
+  this.get('/', function(ctx) {
+    ctx.redirect('/projects');
   });
 
-  this.get('#/login', function(ctx) {
+  this.get('/login', function(ctx) {
     ctx.titleCurrent('Login');
     ctx.partial('templates/login.mustache');
   });
 
-  this.post('#/login', function(ctx) {
+  this.post('/login', function(ctx) {
     $.couch.login({name: ctx.params.user, password: ctx.params.password, success: function(resp) {
-      ctx.redirect("#/account");
+      ctx.redirect("/account");
     }, error: function() {
-      ctx.redirect("#/account");
+      ctx.redirect("/account");
     }});
   });
 
-  this.get('#/logout', function(ctx) {
+  this.get('/logout', function(ctx) {
     $.couch.logout({success: function(resp) {
       userCtx = {};
-      ctx.redirect("#/account");
+      ctx.redirect("/account");
     }});
   });
 
-  this.get('#/account', function(ctx) {
+  this.get('/account', function(ctx) {
     $.couch.session({success: function(resp) {
       if (resp.userCtx.name != null) {
         ctx.titleCurrent('Minha área');
 
         ctx.partial('templates/account.mustache');
-      } else { ctx.redirect("#/login"); }
+      } else { ctx.redirect("/login"); }
     }});
   });
 
-  this.get('#/home', function(ctx) {
+  this.get('/home', function(ctx) {
     ctx.partial('templates/home.mustache');
   });
 
-  this.get('#/partners', function(ctx) {
+  this.get('/partners', function(ctx) {
     ctx.menuActive('partners');
 
     ctx.content = "Sem conteúdo";
@@ -101,7 +101,7 @@ var app = Sammy('#colRight', function() {
     ctx.partial('templates/page.mustache');
   });
 
-  this.get('#/projects', function(ctx) {
+  this.get('/projects', function(ctx) {
     ctx.menuActive('projects');
 
     $.getJSON("http://github.com/api/v2/json/repos/show/henriquegogo?callback=?", function(json) {
@@ -110,7 +110,7 @@ var app = Sammy('#colRight', function() {
     });
   });
 
-  this.get('#/events', function(ctx) {
+  this.get('/events', function(ctx) {
     ctx.menuActive('events');
 
     var feeds = new google.feeds.Feed('http://www.google.com/calendar/feeds/akayu.com.br_8r5ujs48g7bboeq3lovipnpg28@group.calendar.google.com/public/full');
@@ -121,7 +121,7 @@ var app = Sammy('#colRight', function() {
     });
   });
 
-  this.get('#/blog', function(ctx) {
+  this.get('/blog', function(ctx) {
     ctx.menuActive('blog');
 
     ctx.title = "Sem conteúdo";
@@ -132,7 +132,7 @@ var app = Sammy('#colRight', function() {
 });
 
 $(document).ready(function() {
-  app.run('#/');
+  app.run('/');
 
   $('html *').ajaxStart(function() {
     $(this).css('cursor', 'wait');
