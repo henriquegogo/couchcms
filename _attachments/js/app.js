@@ -42,6 +42,19 @@ var app = Sammy('#colRight', function() {
     ctx.render('templates/user.mustache').replace("#user");
   });
 
+  this.after(function(ctx) {
+    $("#colRight").delegate(".editable", "click", function() {
+      $.fancybox('<textarea style="width: 600px; height: 200px">'+$(this).html()+'</textarea><br><button>Edit</button>');
+      tinyMCE.init({mode : "textareas", theme : "advanced",
+        theme_advanced_buttons1 : "bold,italic,underline,|,justifyleft,justifycenter,justifyright,formatselect,fontsizeselect,|,bullist,numlist,|,blockquote,|,link,unlink,cleanup,code,|,forecolor,backcolor",
+        theme_advanced_buttons2 : "",
+        theme_advanced_buttons3 : "",
+        theme_advanced_toolbar_location : "top",
+        theme_advanced_toolbar_align : "left"
+      });
+    });
+  });
+
   this.get('#/', function(ctx) {
     ctx.redirect('#/projects');
   });
@@ -120,4 +133,10 @@ var app = Sammy('#colRight', function() {
 
 $(document).ready(function() {
   app.run('#/');
+
+  $('html *').ajaxStart(function() {
+    $(this).css('cursor', 'wait');
+  }).ajaxStop(function() {
+    $(this).css('cursor', 'auto');
+  });
 });

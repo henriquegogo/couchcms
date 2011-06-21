@@ -212,4 +212,7 @@ form .field {
 }
 
 /* Editor */
-
+.editable:hover {
+  cursor: pointer;
+  background: #FEA !important;
+}

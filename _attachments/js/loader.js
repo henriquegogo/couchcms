@@ -14,5 +14,6 @@ loadScript([
   "js/sammy/sammy.title-latest.min.js",
   "js/sammy/sammy.googleanalytics-latest.min.js",
   "js/fancybox/jquery.fancybox-1.3.4.pack.js",
+  "js/tinymce/tiny_mce.js",
   "http://www.google.com/jsapi"
 ]);
